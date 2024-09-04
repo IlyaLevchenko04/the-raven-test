@@ -1,11 +1,10 @@
-import './App.css';
+import { createRouter, RouterProvider } from '@tanstack/react-router';
+import { routeTree } from './routeTree.gen';
+
+const router = createRouter({ routeTree });
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
