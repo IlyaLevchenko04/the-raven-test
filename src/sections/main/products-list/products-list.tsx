@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { twMerge } from "tailwind-merge";
 
 import { RootState } from "../../../redux/store";
 import { fetchProducts } from "../../../redux/products-slice/products-operations";
@@ -7,16 +8,14 @@ import { fetchProducts } from "../../../redux/products-slice/products-operations
 import { Section } from "../../../shared/components/common/section/section";
 import { Container } from "../../../shared/components/common/container/container";
 import { Item } from "../../../shared/types/product";
-import { DEFAULT_PHOTOS } from "../../../constants/default-products-photos";
-import { twMerge } from "tailwind-merge";
-import { useProductsListController } from "./products-list.controller";
+
+import { ProductCard } from "./components/product-card";
 
 const LIMIT = "6";
 
 export const ProductsList = () => {
-  const { onBuyClick } = useProductsListController();
-
-  const count = useSelector((state: RootState) => state.products.items);
+  const cart = useSelector((state: RootState) => state.products.items);
+  const currency = useSelector((state: RootState) => state.products.currency);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,11 +23,11 @@ export const ProductsList = () => {
       fetchProducts({
         limit: LIMIT,
         page: "1",
-        currency: "UAH",
+        currency,
         filter: "DESC_PRICE",
       }) as any
     );
-  }, [dispatch]);
+  }, [dispatch, currency]);
 
   return (
     <Section>
@@ -44,43 +43,8 @@ export const ProductsList = () => {
         </h2>
 
         <ul className="grid gap-[16px] tablet-vertical:grid-cols-2">
-          {count.map((item: Item) => (
-            <li
-              key={item._id}
-              className="flex flex-col gap-[16px] bg-light-04 p-[16px]"
-            >
-              <img
-                className=" tablet-vertical:h-[600px] w-full"
-                src={
-                  item.mainPhoto === DEFAULT_PHOTOS.depracetedPhoto
-                    ? DEFAULT_PHOTOS.default
-                    : item.mainPhoto
-                }
-                alt=""
-              />
-
-              <div className="flex flex-col gap-[8px]">
-                <h3
-                  className={twMerge(
-                    "font-semi-bold",
-                    "text-[2.4rem] leading-[1.4]",
-                    "tablet:text-[3rem]"
-                  )}
-                >
-                  {item.title}
-                </h3>
-
-                <p>{item.description}</p>
-              </div>
-
-              <button
-                className="bg-brand hover:bg-orange-02 w-full tablet-vertical:w-[184px] text-white py-[12px] px-[8px] mx-auto ease-linear transition-all"
-                id={item._id}
-                onClick={onBuyClick}
-              >
-                Buy
-              </button>
-            </li>
+          {cart.map((item: Item) => (
+            <ProductCard key={item._id} item={item} />
           ))}
         </ul>
       </Container>

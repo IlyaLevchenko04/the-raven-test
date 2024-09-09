@@ -1,13 +1,14 @@
-import { createLazyFileRoute } from '@tanstack/react-router';
+import { createLazyFileRoute } from "@tanstack/react-router";
+import { CartInfo } from "../sections/cart/cart-info/cart-info";
 
-export const Route = createLazyFileRoute('/cart')({
+export const Route = createLazyFileRoute("/cart")({
   component: Cart,
 });
 
 function Cart() {
   return (
-    <div className="p-2">
-      <h3>Cart</h3>
-    </div>
+    <main>
+      <CartInfo />
+    </main>
   );
 }
