@@ -8,7 +8,7 @@ const router = createRouter({ routeTree });
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} basepath="/the-raven-test"/>
     </Provider>
   );
 }
