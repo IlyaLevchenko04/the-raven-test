@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.a8208b0f.css",
-    "main.js": "/static/js/main.22d80ac9.js",
-    "static/js/954.c206a234.chunk.js": "/static/js/954.c206a234.chunk.js",
-    "static/js/536.489b74c1.chunk.js": "/static/js/536.489b74c1.chunk.js",
-    "static/js/365.3cc3ac80.chunk.js": "/static/js/365.3cc3ac80.chunk.js",
-    "static/js/665.061eb0ee.chunk.js": "/static/js/665.061eb0ee.chunk.js",
-    "index.html": "/index.html",
-    "main.a8208b0f.css.map": "/static/css/main.a8208b0f.css.map",
-    "main.22d80ac9.js.map": "/static/js/main.22d80ac9.js.map",
-    "954.c206a234.chunk.js.map": "/static/js/954.c206a234.chunk.js.map",
-    "536.489b74c1.chunk.js.map": "/static/js/536.489b74c1.chunk.js.map",
-    "365.3cc3ac80.chunk.js.map": "/static/js/365.3cc3ac80.chunk.js.map",
-    "665.061eb0ee.chunk.js.map": "/static/js/665.061eb0ee.chunk.js.map"
+    "main.css": "/the-raven-test/static/css/main.a8208b0f.css",
+    "main.js": "/the-raven-test/static/js/main.c8bff8f2.js",
+    "static/js/954.c206a234.chunk.js": "/the-raven-test/static/js/954.c206a234.chunk.js",
+    "static/js/536.489b74c1.chunk.js": "/the-raven-test/static/js/536.489b74c1.chunk.js",
+    "static/js/365.3cc3ac80.chunk.js": "/the-raven-test/static/js/365.3cc3ac80.chunk.js",
+    "static/js/665.061eb0ee.chunk.js": "/the-raven-test/static/js/665.061eb0ee.chunk.js",
+    "index.html": "/the-raven-test/index.html",
+    "main.a8208b0f.css.map": "/the-raven-test/static/css/main.a8208b0f.css.map",
+    "main.c8bff8f2.js.map": "/the-raven-test/static/js/main.c8bff8f2.js.map",
+    "954.c206a234.chunk.js.map": "/the-raven-test/static/js/954.c206a234.chunk.js.map",
+    "536.489b74c1.chunk.js.map": "/the-raven-test/static/js/536.489b74c1.chunk.js.map",
+    "365.3cc3ac80.chunk.js.map": "/the-raven-test/static/js/365.3cc3ac80.chunk.js.map",
+    "665.061eb0ee.chunk.js.map": "/the-raven-test/static/js/665.061eb0ee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a8208b0f.css",
-    "static/js/main.22d80ac9.js"
+    "static/js/main.c8bff8f2.js"
   ]
 }
