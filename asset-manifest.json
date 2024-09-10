@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/the-raven-test/static/css/main.a8208b0f.css",
-    "main.js": "/the-raven-test/static/js/main.31acdd54.js",
+    "main.css": "/the-raven-test/static/css/main.52c5069c.css",
+    "main.js": "/the-raven-test/static/js/main.af8652c6.js",
     "static/js/954.c206a234.chunk.js": "/the-raven-test/static/js/954.c206a234.chunk.js",
-    "static/js/536.489b74c1.chunk.js": "/the-raven-test/static/js/536.489b74c1.chunk.js",
-    "static/js/365.3cc3ac80.chunk.js": "/the-raven-test/static/js/365.3cc3ac80.chunk.js",
+    "static/js/536.82a2e915.chunk.js": "/the-raven-test/static/js/536.82a2e915.chunk.js",
+    "static/js/560.006fb7d1.chunk.js": "/the-raven-test/static/js/560.006fb7d1.chunk.js",
+    "static/js/365.895ffde4.chunk.js": "/the-raven-test/static/js/365.895ffde4.chunk.js",
     "static/js/665.061eb0ee.chunk.js": "/the-raven-test/static/js/665.061eb0ee.chunk.js",
     "index.html": "/the-raven-test/index.html",
-    "main.a8208b0f.css.map": "/the-raven-test/static/css/main.a8208b0f.css.map",
-    "main.31acdd54.js.map": "/the-raven-test/static/js/main.31acdd54.js.map",
+    "main.52c5069c.css.map": "/the-raven-test/static/css/main.52c5069c.css.map",
+    "main.af8652c6.js.map": "/the-raven-test/static/js/main.af8652c6.js.map",
     "954.c206a234.chunk.js.map": "/the-raven-test/static/js/954.c206a234.chunk.js.map",
-    "536.489b74c1.chunk.js.map": "/the-raven-test/static/js/536.489b74c1.chunk.js.map",
-    "365.3cc3ac80.chunk.js.map": "/the-raven-test/static/js/365.3cc3ac80.chunk.js.map",
+    "536.82a2e915.chunk.js.map": "/the-raven-test/static/js/536.82a2e915.chunk.js.map",
+    "560.006fb7d1.chunk.js.map": "/the-raven-test/static/js/560.006fb7d1.chunk.js.map",
+    "365.895ffde4.chunk.js.map": "/the-raven-test/static/js/365.895ffde4.chunk.js.map",
     "665.061eb0ee.chunk.js.map": "/the-raven-test/static/js/665.061eb0ee.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8208b0f.css",
-    "static/js/main.31acdd54.js"
+    "static/css/main.52c5069c.css",
+    "static/js/main.af8652c6.js"
   ]
 }
