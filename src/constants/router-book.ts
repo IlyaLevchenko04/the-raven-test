@@ -1,4 +1,4 @@
 export const ROUTER_BOOK = Object.freeze({
-    baseUrl: '/',
-    cart: '/cart'
+    baseUrl: '/the-raven-test/',
+    cart: '/the-raven-test/cart'
 })
