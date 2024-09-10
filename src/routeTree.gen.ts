@@ -16,10 +16,16 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
+const ThanksLazyImport = createFileRoute('/thanks')()
 const CartLazyImport = createFileRoute('/cart')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const ThanksLazyRoute = ThanksLazyImport.update({
+  path: '/thanks',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/thanks.lazy').then((d) => d.Route))
 
 const CartLazyRoute = CartLazyImport.update({
   path: '/cart',
@@ -49,6 +55,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartLazyImport
       parentRoute: typeof rootRoute
     }
+    '/thanks': {
+      id: '/thanks'
+      path: '/thanks'
+      fullPath: '/thanks'
+      preLoaderRoute: typeof ThanksLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -57,6 +70,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   CartLazyRoute,
+  ThanksLazyRoute,
 })
 
 /* prettier-ignore-end */
@@ -68,7 +82,8 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/cart"
+        "/cart",
+        "/thanks"
       ]
     },
     "/": {
@@ -76,6 +91,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/cart": {
       "filePath": "cart.lazy.tsx"
+    },
+    "/thanks": {
+      "filePath": "thanks.lazy.tsx"
     }
   }
 }

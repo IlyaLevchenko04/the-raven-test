@@ -48,7 +48,7 @@ export const Header = () => {
             </span>
           </Link>
 
-          <ul className="flex gap-16">
+          <ul className="flex gap-[16px]">
             {Object.entries(ROUTER_BOOK).map(([key, value]) => (
               <li key={key}>
                 <Link

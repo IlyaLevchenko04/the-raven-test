@@ -29,11 +29,14 @@ export const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.isLoading = true;
+      })
       .addCase(
         fetchProducts.fulfilled,
         (state: ProductsState, action: PayloadAction<Item[]>) => {
           state.items = [...action.payload];
-          state.isLoading = !state.isLoading;
+          state.isLoading = false;
         }
       )
       .addCase(fetchProducts.rejected, (state: ProductsState, action) => {

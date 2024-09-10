@@ -2,8 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { Item } from "../../shared/types/product";
 
+export interface ItemWithQuantity extends Item {
+  quantity: number;
+}
+
 export interface CartState {
-  cart: Item[];
+  cart: ItemWithQuantity[];
   cartQuantity: {
     id: string;
     quantity: number;
@@ -16,26 +20,17 @@ const initialState: CartState = {
 };
 
 export const cartSlice = createSlice({
-  name: "counter",
+  name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Item>) => {
+    addToCart: (state, action: PayloadAction<ItemWithQuantity>) => {
       state.cart = [...state.cart, action.payload];
     },
-    deleteFromCart: (state, action: PayloadAction<Item>) => {
+    deleteFromCart: (state, action: PayloadAction<ItemWithQuantity>) => {
       state.cart.filter((item) => item._id !== action.payload._id);
     },
     clearCart: (state) => {
       state.cart = [];
-    },
-    addNewQuantity: (
-      state,
-      action: PayloadAction<{
-        id: string;
-        quantity: number;
-      }>
-    ) => {
-      state.cartQuantity = [...state.cartQuantity, action.payload];
     },
     changeQuantity: (
       state,
@@ -43,7 +38,7 @@ export const cartSlice = createSlice({
     ) => {
       const { type, id } = action.payload;
 
-      const currentItem = state.cartQuantity.find((item) => item.id === id);
+      const currentItem = state.cart.find((item) => item._id === id);
 
       if (!currentItem) return;
 
@@ -55,8 +50,8 @@ export const cartSlice = createSlice({
 
         const newItem = { ...currentItem, quantity: currentItem.quantity - 1 };
 
-        state.cartQuantity = state.cartQuantity.map((item) => {
-          if (item.id !== id) return item;
+        state.cart = state.cart.map((item) => {
+          if (item._id !== id) return item;
 
           return newItem;
         });
@@ -65,8 +60,8 @@ export const cartSlice = createSlice({
       if (type === "plus") {
         const newItem = { ...currentItem, quantity: currentItem.quantity + 1 };
 
-        state.cartQuantity = state.cartQuantity.map((item) => {
-          if (item.id !== id) return item;
+        state.cart = state.cart.map((item) => {
+          if (item._id !== id) return item;
 
           return newItem;
         });
@@ -75,12 +70,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const {
-  addToCart,
-  deleteFromCart,
-  clearCart,
-  changeQuantity,
-  addNewQuantity,
-} = cartSlice.actions;
+export const { addToCart, deleteFromCart, clearCart, changeQuantity } =
+  cartSlice.actions;
 
 export const cartReducer = cartSlice.reducer;

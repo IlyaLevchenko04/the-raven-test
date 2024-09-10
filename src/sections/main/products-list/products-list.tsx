@@ -16,9 +16,13 @@ const LIMIT = "6";
 export const ProductsList = () => {
   const cart = useSelector((state: RootState) => state.products.items);
   const currency = useSelector((state: RootState) => state.products.currency);
+  const isLoading = useSelector((state: RootState) => state.products.isLoading);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (cart.length > 0) return;
+
     dispatch(
       fetchProducts({
         limit: LIMIT,
@@ -27,7 +31,7 @@ export const ProductsList = () => {
         filter: "DESC_PRICE",
       }) as any
     );
-  }, [dispatch, currency]);
+  }, [dispatch, currency, cart.length]);
 
   return (
     <Section>
@@ -42,11 +46,17 @@ export const ProductsList = () => {
           Tranding
         </h2>
 
-        <ul className="grid gap-[16px] tablet-vertical:grid-cols-2">
-          {cart.map((item: Item) => (
-            <ProductCard key={item._id} item={item} />
-          ))}
-        </ul>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-fit">
+            <div className="w-16 h-16 border-4 border-brand border-dashed rounded-full animate-spin" />
+          </div>
+        ) : (
+          <ul className="grid gap-[16px] tablet-vertical:grid-cols-2">
+            {cart.map((item: Item) => (
+              <ProductCard key={item._id} item={item} />
+            ))}
+          </ul>
+        )}
       </Container>
     </Section>
   );

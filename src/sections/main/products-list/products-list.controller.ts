@@ -1,8 +1,5 @@
 import { MouseEventHandler } from "react";
-import {
-  addNewQuantity,
-  addToCart,
-} from "../../../redux/cart-slice/cart-slice";
+import { addToCart } from "../../../redux/cart-slice/cart-slice";
 import { useDispatch, useSelector } from "react-redux";
 import { Item } from "../../../shared/types/product";
 import { RootState } from "../../../redux/store";
@@ -18,20 +15,12 @@ export const useProductsListController = (cartItem: Item) => {
 
     if (cartIds.includes(id)) return;
 
-    localStorage.setItem("cart", JSON.stringify([...cart, cartItem]));
-    const quantity = JSON.parse(localStorage.getItem("quantity") as string);
-
     localStorage.setItem(
-      "quantity",
-      JSON.stringify(
-        quantity
-          ? [...quantity, { id: id, quantity: 1 }]
-          : [{ id: id, quantity: 1 }]
-      )
+      "cart",
+      JSON.stringify([...cart, { ...cartItem, quantity: 1 }])
     );
 
-    dispatch(addNewQuantity({ id: id, quantity: 1 }));
-    dispatch(addToCart(cartItem));
+    dispatch(addToCart({ ...cartItem, quantity: 1 }));
   };
 
   return {

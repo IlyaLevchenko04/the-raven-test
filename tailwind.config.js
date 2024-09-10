@@ -45,6 +45,11 @@ module.exports = {
         "t-v-container": "900px",
         "l-container": "1040px",
       },
+
+      boxShadow: {
+        "left-shadow-black-button":
+          "-0.2rem 0.2rem #CC5500, -0.3rem 0.3rem rgb(0, 0, 0)",
+      },
     },
   },
   plugins: [],
