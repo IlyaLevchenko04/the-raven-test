@@ -21,8 +21,6 @@ export const ProductsList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (cart.length > 0) return;
-
     dispatch(
       fetchProducts({
         limit: LIMIT,

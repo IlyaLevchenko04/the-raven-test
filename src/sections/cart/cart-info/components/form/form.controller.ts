@@ -66,9 +66,9 @@ export const useFormController = () => {
     const surnameInput = form.elements.namedItem("surname") as HTMLInputElement;
     const phoneInput = form.elements.namedItem("phone") as HTMLInputElement;
 
-    const name = nameInput.value;
-    const surname = surnameInput.value;
-    const phone = phoneInput.value;
+    const name = nameInput.value.trim();
+    const surname = surnameInput.value.trim();
+    const phone = phoneInput.value.trim();
 
     const isFormValid = validate({ name, surname, phone });
 

@@ -18,6 +18,7 @@ import { Route as rootRoute } from './routes/__root'
 
 const ThanksLazyImport = createFileRoute('/thanks')()
 const CartLazyImport = createFileRoute('/cart')()
+const R500LazyImport = createFileRoute('/500')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
@@ -31,6 +32,11 @@ const CartLazyRoute = CartLazyImport.update({
   path: '/cart',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/cart.lazy').then((d) => d.Route))
+
+const R500LazyRoute = R500LazyImport.update({
+  path: '/500',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/500.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
@@ -46,6 +52,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/500': {
+      id: '/500'
+      path: '/500'
+      fullPath: '/500'
+      preLoaderRoute: typeof R500LazyImport
       parentRoute: typeof rootRoute
     }
     '/cart': {
@@ -69,6 +82,7 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
+  R500LazyRoute,
   CartLazyRoute,
   ThanksLazyRoute,
 })
@@ -82,12 +96,16 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/500",
         "/cart",
         "/thanks"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/500": {
+      "filePath": "500.lazy.tsx"
     },
     "/cart": {
       "filePath": "cart.lazy.tsx"

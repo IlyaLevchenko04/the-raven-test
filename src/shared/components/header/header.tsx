@@ -1,4 +1,4 @@
-import { Link, useLocation } from "@tanstack/react-router";
+import { useLocation } from "@tanstack/react-router";
 import { NAV_ITEMS } from "../../../constants/nav-items";
 import { ROUTER_BOOK } from "../../../constants/router-book";
 import { Logo } from "../icons/logo";
@@ -37,8 +37,8 @@ export const Header = () => {
     <header className="sticky top-0 z-50 bg-white border-b-[1px] border-b-light-01">
       <Container className="py-[16px]">
         <nav className="flex justify-between">
-          <Link
-            to={ROUTER_BOOK.baseUrl}
+          <a
+            href={ROUTER_BOOK.baseUrl}
             className="flex gap-[4px] hover:text-brand"
           >
             <Logo className="w-[24px] h-[24px] flex justify-center items-center ease-linear transition-all" />
@@ -46,13 +46,13 @@ export const Header = () => {
             <span className="hover:text-brand ease-linear transition-all">
               OrangeStore
             </span>
-          </Link>
+          </a>
 
           <ul className="flex gap-[16px]">
             {Object.entries(ROUTER_BOOK).map(([key, value]) => (
               <li key={key}>
-                <Link
-                  to={value}
+                <a
+                  href={value}
                   className={twMerge(
                     "font-semi-bold ease-linear transition-all",
                     "hover:text-brand",
@@ -60,16 +60,16 @@ export const Header = () => {
                   )}
                 >
                   {NAV_ITEMS[key as keyof typeof NAV_ITEMS]}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
 
           <div className="flex gap-[8px]">
             <div className="flex gap-[4px] justify-center items-center">
-              <Link to={ROUTER_BOOK.cart}>
+              <a href={ROUTER_BOOK.cart}>
                 <Cart className="w-[24px] h-[24px] z-5 hover:fill-brand ease-linear transition-all" />
-              </Link>
+              </a>
 
               {cart.length > 0 && (
                 <span className="bg-orange-02 text-white rounded-full w-[28px] h-[28px] text-center">

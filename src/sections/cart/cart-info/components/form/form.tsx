@@ -52,7 +52,7 @@ export const Form = () => {
 
           <input
             placeholder="Phone"
-            type="tel"
+            type="number"
             id="phone"
             className="border-[1px] border-light-01 px-[8px] py-[4px]"
           />

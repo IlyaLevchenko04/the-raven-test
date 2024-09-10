@@ -42,6 +42,8 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.rejected, (state: ProductsState, action) => {
         state.isLoading = false;
         state.error.message = action.payload as string;
+
+        window.location.pathname = '/500'
       });
   },
 });
