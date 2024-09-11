@@ -1,13 +1,14 @@
-import { FormEventHandler, useState } from "react";
-import { useDispatch } from "react-redux";
-import { z, ZodError } from "zod";
-import { clearCart } from "../../../../../redux/cart-slice/cart-slice";
-import { useNavigate } from "@tanstack/react-router";
+import { FormEventHandler, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { z, ZodError } from 'zod';
+import { clearCart } from '../../../../../redux/cart-slice/cart-slice';
+import { useNavigate } from '@tanstack/react-router';
+import { ROUTER_BOOK } from '../../../../../constants/router-book';
 
 const defaultErrorsState = {
-  name: "",
-  phone: "",
-  surname: "",
+  name: '',
+  phone: '',
+  surname: '',
 };
 
 export const useFormController = () => {
@@ -16,11 +17,11 @@ export const useFormController = () => {
 
   const orderSchema = z
     .object({
-      name: z.string().min(1, { message: "Name is required" }),
-      surname: z.string().min(1, { message: "Surname is required" }),
+      name: z.string().min(1, { message: 'Name is required' }),
+      surname: z.string().min(1, { message: 'Surname is required' }),
       phone: z
         .string()
-        .regex(/^\+?\d[\d\s-]{8,14}$/, { message: "Invalid phone number" }),
+        .regex(/^\+?\d[\d\s-]{8,14}$/, { message: 'Invalid phone number' }),
     })
     .required();
 
@@ -37,12 +38,12 @@ export const useFormController = () => {
       const err = e as unknown as ZodError;
 
       const _errors = {
-        name: "",
-        surname: "",
-        phone: "",
+        name: '',
+        surname: '',
+        phone: '',
       };
 
-      err.issues.forEach((error) => {
+      err.issues.forEach(error => {
         const key = error.path[0] as keyof typeof _errors;
         const value = error.message;
 
@@ -55,16 +56,16 @@ export const useFormController = () => {
     }
   };
 
-  const onSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const onSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
 
     setErrors(defaultErrorsState);
 
     const form = e.target as HTMLFormElement;
 
-    const nameInput = form.elements.namedItem("name") as HTMLInputElement;
-    const surnameInput = form.elements.namedItem("surname") as HTMLInputElement;
-    const phoneInput = form.elements.namedItem("phone") as HTMLInputElement;
+    const nameInput = form.elements.namedItem('name') as HTMLInputElement;
+    const surnameInput = form.elements.namedItem('surname') as HTMLInputElement;
+    const phoneInput = form.elements.namedItem('phone') as HTMLInputElement;
 
     const name = nameInput.value.trim();
     const surname = surnameInput.value.trim();
@@ -82,10 +83,10 @@ export const useFormController = () => {
 
     console.log(formData);
 
-    localStorage.removeItem("cart");
+    localStorage.removeItem('cart');
     dispatch(clearCart());
 
-    navigate({ to: "/thanks" });
+    navigate({ to: ROUTER_BOOK.thanks });
   };
 
   return {

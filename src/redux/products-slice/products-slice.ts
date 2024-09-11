@@ -1,35 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { Item } from "../../shared/types/product";
-import { fetchProducts } from "./products-operations";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { Item } from '../../shared/types/product';
+import { fetchProducts } from './products-operations';
+import { ROUTER_BOOK } from '../../constants/router-book';
 
 export interface ProductsState {
   items: Item[];
   isLoading: boolean;
-  currency: "UAH" | "EUR" | "USD";
+  currency: 'UAH' | 'EUR' | 'USD';
   error: { message: string | null };
 }
 
 const initialState: ProductsState = {
   items: [],
   isLoading: false,
-  currency: JSON.parse(localStorage.getItem("currency") as string) || "UAH",
+  currency: JSON.parse(localStorage.getItem('currency') as string) || 'UAH',
   error: {
     message: null,
   },
 };
 
 export const productsSlice = createSlice({
-  name: "products",
+  name: 'products',
   initialState,
   reducers: {
-    setCurrency: (state, action: PayloadAction<"UAH" | "EUR" | "USD">) => {
+    setCurrency: (state, action: PayloadAction<'UAH' | 'EUR' | 'USD'>) => {
       state.currency = action.payload;
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchProducts.pending, (state) => {
+      .addCase(fetchProducts.pending, state => {
         state.isLoading = true;
       })
       .addCase(
@@ -43,7 +44,7 @@ export const productsSlice = createSlice({
         state.isLoading = false;
         state.error.message = action.payload as string;
 
-        window.location.pathname = '/500'
+        window.location.pathname = ROUTER_BOOK.serverError;
       });
   },
 });
