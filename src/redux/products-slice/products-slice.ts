@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { Item } from '../../shared/types/product';
 import { fetchProducts } from './products-operations';
-import { ROUTER_BOOK } from '../../constants/router-book';
 
 export interface ProductsState {
   items: Item[];
@@ -43,8 +42,6 @@ export const productsSlice = createSlice({
       .addCase(fetchProducts.rejected, (state: ProductsState, action) => {
         state.isLoading = false;
         state.error.message = action.payload as string;
-
-        window.location.pathname = ROUTER_BOOK.serverError;
       });
   },
 });
