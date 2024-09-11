@@ -1,8 +1,8 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import { Hero } from "../sections/main/hero/hero";
-import { ProductsList } from "../sections/main/products-list/products-list";
+import { createLazyFileRoute } from '@tanstack/react-router';
+import { Hero } from '../sections/main/hero/hero';
+import { ProductsList } from '../sections/main/products-list/products-list';
 
-export const Route = createLazyFileRoute("/")({
+export const Route = createLazyFileRoute('/')({
   component: Index,
 });
 
